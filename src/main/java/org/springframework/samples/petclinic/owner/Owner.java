@@ -21,11 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -61,6 +57,16 @@ public class Owner extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets;
 
+    @Transient
+    private String testOwner;
+
+    public String getTestOwner() {
+        return this.testOwner;
+    }
+
+    public void setTestOwner(String testOwner) {
+        this.testOwner = testOwner;
+    }
 
     public String getAddress() {
         return this.address;
