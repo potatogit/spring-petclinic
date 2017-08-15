@@ -4,8 +4,10 @@
   th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 
 <body>
-
-  <h2>Veterinarians</h2>
+  <div style="display:flex;">
+      <h2>Veterinarians</h2>
+      <a style="margin-left:960px;" class="btn btn-default" th:href="@{/vet/new}">Add Vet</a>
+  </div>
 
   <table id="vets" class="table table-striped">
     <thead>

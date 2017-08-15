@@ -20,6 +20,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -57,4 +58,20 @@ class VetController {
         return vets;
     }
 
+//    @RequestMapping(value = "/vet/new", method = RequestMethod.GET)
+//    public String initCreationForm(Map<String, Object> model) {
+//        Vet vet = new Vet();
+//        model.put("vet", vet);
+//        return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
+//    }
+//
+//    @RequestMapping(value = "/owners/new", method = RequestMethod.POST)
+//    public String processCreationForm(@Valid Owner owner, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
+//        } else {
+//            this.owners.save(owner);
+//            return "redirect:/owners/" + owner.getId();
+//        }
+//    }
 }

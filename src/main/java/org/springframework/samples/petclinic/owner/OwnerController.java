@@ -58,7 +58,7 @@ class OwnerController {
     public String initCreationForm(Map<String, Object> model) {
         Owner owner = new Owner();
         model.put("owner", owner);
-        return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
+        return VIEWS_OWNER_CREATE_OR_UPDATE_FORM; // specify which template to render
     }
 
     @RequestMapping(value = "/owners/new", method = RequestMethod.POST)
