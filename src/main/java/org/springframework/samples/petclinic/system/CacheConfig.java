@@ -1,6 +1,9 @@
 package org.springframework.samples.petclinic.system;
 
+import org.springframework.cache.Cache;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
@@ -11,4 +14,8 @@ import org.springframework.context.annotation.Profile;
 @EnableCaching
 @Profile("production")
 class CacheConfig {
+    @Bean
+    public Cache avengersCache() {
+        return new ConcurrentMapCache("vets");
+    }
 }

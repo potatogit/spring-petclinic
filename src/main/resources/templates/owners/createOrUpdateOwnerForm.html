@@ -23,6 +23,7 @@
           th:with="text=${owner['new']} ? 'Add Owner' : 'Update Owner'"
           class="btn btn-default" type="submit" th:text="${text}">Add
           Owner</button>
+          <!--${owner['new']} specifies owner.isNew()-->
       </div>
     </div>
   </form>
