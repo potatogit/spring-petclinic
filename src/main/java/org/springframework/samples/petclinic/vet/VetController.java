@@ -15,11 +15,16 @@
  */
 package org.springframework.samples.petclinic.vet;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +42,7 @@ class VetController {
 
     private static final String VIEWS_VET_CREATE_OR_UPDATE_FORM = "vets/createOrUpdateVetForm";
     private final VetRepository vets;
+    private static final Logger logger = LoggerFactory.getLogger(VetController.class);
 
 
     @Autowired
@@ -48,6 +54,7 @@ class VetController {
     public String showVetList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for Object-Xml mapping
+        logger.info("showVetList method");
         Vets vets = new Vets();
         vets.getVetList().addAll(this.vets.findAll());
         model.put("vets", vets);
@@ -79,4 +86,16 @@ class VetController {
             return "redirect:/vets.html" ;
         }
     }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public String test(@RequestBody TestRequestBody testRequestBody) {
+        LocalDate l = LocalDate.now();
+        LocalDateTime time = LocalDateTime.now();
+        logger.info("today is {}", l);   // like "2017-08-31"
+        logger.info("time is {}", time); // like "2017-08-31T17:50:58.642"
+        logger.info("testRequestBody is {}", testRequestBody);
+        return "redirect:/vets.html";
+    }
+
+
 }

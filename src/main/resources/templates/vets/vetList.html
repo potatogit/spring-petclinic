@@ -4,9 +4,11 @@
   th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 
 <body>
+<script type="text/javascript" src="resources/js/vetList.js"></script>
   <div style="display:flex;">
       <h2>Veterinarians</h2>
       <a style="margin-left:960px;" class="btn btn-default" th:href="@{/vets/new}">Add Vet</a>
+      <button id="test-request" onclick="onTestRequest()">test request button</button>
   </div>
 
   <table id="vets" class="table table-striped">
