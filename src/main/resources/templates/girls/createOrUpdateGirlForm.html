@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'girls')}">
+
+<body>
+
+<h2>Girls</h2>
+<form th:object="${girl}" class="form-horizontal" id="add-girl-form" method="post">
+    <div class="form-group has-feedback">
+        <input
+                th:replace="~{fragments/inputField :: input ('First Name', 'firstName')}" />
+        <input
+                th:replace="~{fragments/inputField :: input ('Last Name', 'lastName')}" />
+        <input
+                th:replace="~{fragments/inputField :: input ('Mobile', 'mobile')}" />
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button
+                    th:with="text=${girl['new']} ? 'Add Girl' : 'Update Girl'"
+                    class="btn btn-default" type="submit" th:text="${text}">Add
+                Girl</button>
+            <!--${owner['new']} specifies owner.isNew()-->
+        </div>
+    </div>
+</form>
+</body>
+</html>
